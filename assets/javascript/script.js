@@ -50,24 +50,22 @@ function storeText(event) {
 
 for (i in liEl) {
     liEl[i].on("click", "button", storeText);
+    if (parseInt(i) + 9 < dt.hour) {
+        liEl[i].children().eq(1).css({"background-color": "red", "color": "white"});
+    } else if (parseInt(i) + 9 === dt.hour) {
+        liEl[i].children().eq(1).css({"background-color": "green", "color": "white"});
+    } else if (parseInt(i) + 9 > dt.hour) {
+        liEl[i].children().eq(1).css({"background-color": "#0084ff", "color": "black"});
+    }
 }
-
-if (i + 9 < dt.hour) {
-    liEl[i].children().eq(1).css({"background-color": "red"});
-} else if (i + 9 === dt.hour) {
-    liEl[i].children().eq(1).css({"background-color": "green"});
-} else {
-    liEl[i].children().eq(1).css({"background-color": "gray"});
-}
-
 interval = setInterval(function() {
     for (i in liEl) {
-        dt = dateTime.now();
+        dt = dateTime.now()
         if (parseInt(i) + 9 < dt.hour) {
             liEl[i].children().eq(1).css({"background-color": "red", "color": "white"});
         } else if (parseInt(i) + 9 === dt.hour) {
             liEl[i].children().eq(1).css({"background-color": "green", "color": "white"});
-        } else {
+        } else if (parseInt(i) + 9 > dt.hour) {
             liEl[i].children().eq(1).css({"background-color": "#0084ff", "color": "black"});
         }
     }
