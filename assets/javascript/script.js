@@ -1,5 +1,6 @@
 var dateTime = luxon.DateTime;
 let dt = dateTime.now();
+$("#currentDay").text(dt.toLocaleString(dateTime.DATETIME_FULL));
 let containerEl = $(".container");
 let ulEl = $("<ul>");
 let liEl = [];
@@ -59,8 +60,9 @@ for (i in liEl) {
     }
 }
 interval = setInterval(function() {
+    dt = dateTime.now();
+    $("#currentDay").text(dt.toLocaleString(dateTime.DATETIME_FULL));
     for (i in liEl) {
-        dt = dateTime.now()
         if (parseInt(i) + 9 < dt.hour) {
             liEl[i].children().eq(1).css({"background-color": "red", "color": "white"});
         } else if (parseInt(i) + 9 === dt.hour) {
